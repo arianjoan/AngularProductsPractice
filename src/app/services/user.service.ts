@@ -13,4 +13,8 @@ export class UserService {
   logIn(user : User) : Observable<any>{
     return this.http.post('https://utn2019-avanzada2-tp9.herokuapp.com/login',user);
   }
+
+  userExists(email : String){
+    return this.http.get('https://utn2019-avanzada2-tp9.herokuapp.com/users/identities?email=' + email).toPromise();
+  }
 }

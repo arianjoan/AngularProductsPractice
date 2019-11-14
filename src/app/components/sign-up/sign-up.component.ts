@@ -17,14 +17,18 @@ export class SignUpComponent implements OnInit {
   constructor(private userService: UserService, private formBuilder: FormBuilder) {
 
     this.formUser = this.formBuilder.group({
-      'email': [this.user.email],
+      'email': [this.user.email,,CustomValidators.checkEmail(userService)],
       'password' : [this.user.password],
       'verifyPassword' : '',
     },{validator : [CustomValidators.checkPasswords,CustomValidators.checkName]})
-
+  
   }
 
 ngOnInit() {
+}
+
+signUp(){
+  
 }
 
 }

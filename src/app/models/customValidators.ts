@@ -1,4 +1,5 @@
-import { AbstractControl, ValidatorFn, ValidationErrors, FormGroup } from '@angular/forms';
+import { AbstractControl, ValidatorFn, ValidationErrors, FormGroup, AsyncValidatorFn } from '@angular/forms';
+import { UserService } from '../services/user.service';
 
 export class CustomValidators {
 
@@ -29,6 +30,26 @@ export class CustomValidators {
           }else{
               null;
           }
+      }
+
+      static checkEmail(userService : UserService) : AsyncValidatorFn{
+         return (control : AbstractControl) : Promise<ValidationErrors> | null => {
+             console.log('holaa');
+             return new Promise((resolve,reject) => {
+                 if (! control.value){
+                     resolve(null);
+                 }
+                 userService.userExists(control.value).then((response) => {
+                     resolve(null);
+                 }).catch((error) => {
+                     if (error.status === 409){
+                         resolve ({'userExists' : true});
+                     }else if (error.status === 204){
+                         resolve (null);
+                     }
+                 })
+             });
+         }
       }
 
 }

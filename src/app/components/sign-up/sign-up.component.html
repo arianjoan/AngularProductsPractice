@@ -14,6 +14,9 @@
             <div *ngIf="formUser.hasError('shortName')">
                 Usuario Corto
             </div>
+            <div *ngIf="formUser.get('email').hasError('UserExists')">
+                CHAU
+            </div>
         </div>
         <div class="row">
             <div class="col-sm-6">
