@@ -9,6 +9,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { ListProductComponent } from './components/list-product/list-product.component';
 import { ProductComponent } from './components/product/product.component';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     LogInComponent,
     ListProductComponent,
     ProductComponent,
-    PaginatorComponent
+    PaginatorComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,

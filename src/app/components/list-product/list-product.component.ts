@@ -18,7 +18,6 @@ export class ListProductComponent implements OnInit {
     this.productService.getProducts(0).subscribe((products) => {
       this.products = products.items;
       this.qProducts = products.total / 50;
-      console.log(this.qProducts);
     })
   }
 
@@ -26,7 +25,6 @@ export class ListProductComponent implements OnInit {
     this.productService.getProducts(event - 1).subscribe((products) => {
       this.products = products.items;
       this.qProducts = products.total / 50;
-      console.log(this.qProducts);
     })
   }
 
