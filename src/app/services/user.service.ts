@@ -17,4 +17,8 @@ export class UserService {
   userExists(email : String){
     return this.http.get('https://utn2019-avanzada2-tp9.herokuapp.com/users/identities?email=' + email).toPromise();
   }
+
+  signUp(user : User){
+    return this.http.post('https://utn2019-avanzada2-tp9.herokuapp.com/sign-up',user);
+  }
 }

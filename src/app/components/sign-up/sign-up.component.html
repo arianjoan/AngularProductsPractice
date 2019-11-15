@@ -14,8 +14,8 @@
             <div *ngIf="formUser.hasError('shortName')">
                 Usuario Corto
             </div>
-            <div *ngIf="formUser.get('email').hasError('UserExists')">
-                CHAU
+            <div *ngIf="formUser.get('email').hasError('userExists')">
+                El usuario ya existe
             </div>
         </div>
         <div class="row">
@@ -32,13 +32,16 @@
                     formControlName='verifyPassword'>
             </div>
         </div>
-        <div *ngIf="formUser.hasError('notSame')">
-            Las contraseñas no coinciden
+        <div *ngIf="((formUser.get('password').dirty) || (formUser.get('password').touched))">
+            <div *ngIf="formUser.hasError('notSame')">
+                Las contraseñas no coinciden
+            </div>
         </div>
+
         <br>
         <div class="row">
             <div class="col-sm-12">
-                <button type="submit" class="btn btn-success">Log In</button>
+                <button type="submit" class="btn btn-success" [disabled]='formUser.invalid'>Log In</button>
             </div>
         </div>
     </form>

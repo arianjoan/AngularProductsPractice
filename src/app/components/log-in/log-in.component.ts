@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
@@ -10,7 +11,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class LogInComponent implements OnInit {
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder) { }
+  constructor(private userService: UserService, private formBuilder: FormBuilder, private router : Router) { }
   user: User = new User();
   userGroup: FormGroup;
 
@@ -26,6 +27,7 @@ export class LogInComponent implements OnInit {
     this.user = this.userGroup.value;
     this.userService.logIn(this.user).subscribe((token) => {  
       localStorage.setItem('token',token.jwt);
+      this.router.navigate(['/products']);
     })
   }
 

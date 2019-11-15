@@ -14,7 +14,7 @@ export class CustomValidators {
     } */
 
     static checkPasswords(group: FormGroup) { 
-        console.log(group);
+        
         let pass = group.controls.password.value;
         let confirmPass = group.controls.verifyPassword.value;
       
@@ -25,7 +25,6 @@ export class CustomValidators {
           
           let name = group.controls.email.value;
           if (name && name.length < 3){
-            console.log('hola');
               return {shortName : true}
           }else{
               null;
@@ -34,7 +33,6 @@ export class CustomValidators {
 
       static checkEmail(userService : UserService) : AsyncValidatorFn{
          return (control : AbstractControl) : Promise<ValidationErrors> | null => {
-             console.log('holaa');
              return new Promise((resolve,reject) => {
                  if (! control.value){
                      resolve(null);
